@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ums-service
+    name: auth-server
   cloud:
     nacos:
       config:
