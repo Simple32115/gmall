@@ -1,22 +1,17 @@
 package com.atguigu.gmall.pms.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.service.SpuImagesService;
+import com.itguigu.gmall.pms.entity.SpuImagesEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.atguigu.gmall.pms.entity.SpuImagesEntity;
-import com.atguigu.gmall.pms.service.SpuImagesService;
-
-
+import java.util.Arrays;
 
 
 /**
@@ -52,8 +47,8 @@ public class SpuImagesController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('pms:spuimages:info')")
-    public Resp<SpuImagesEntity> info(@PathVariable("id") Long id){
-		SpuImagesEntity spuImages = spuImagesService.getById(id);
+    public Resp<SpuImagesEntity> info(@PathVariable("id") Long id) {
+        SpuImagesEntity spuImages = spuImagesService.getById(id);
 
         return Resp.ok(spuImages);
     }
@@ -64,8 +59,8 @@ public class SpuImagesController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('pms:spuimages:save')")
-    public Resp<Object> save(@RequestBody SpuImagesEntity spuImages){
-		spuImagesService.save(spuImages);
+    public Resp<Object> save(@RequestBody SpuImagesEntity spuImages) {
+        spuImagesService.save(spuImages);
 
         return Resp.ok(null);
     }
@@ -76,8 +71,8 @@ public class SpuImagesController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('pms:spuimages:update')")
-    public Resp<Object> update(@RequestBody SpuImagesEntity spuImages){
-		spuImagesService.updateById(spuImages);
+    public Resp<Object> update(@RequestBody SpuImagesEntity spuImages) {
+        spuImagesService.updateById(spuImages);
 
         return Resp.ok(null);
     }
@@ -88,8 +83,8 @@ public class SpuImagesController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('pms:spuimages:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids){
-		spuImagesService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids) {
+        spuImagesService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

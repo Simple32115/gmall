@@ -1,22 +1,18 @@
 package com.atguigu.gmall.pms.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.service.SkuSaleAttrValueService;
+import com.itguigu.gmall.pms.entity.SkuSaleAttrValueEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.atguigu.gmall.pms.entity.SkuSaleAttrValueEntity;
-import com.atguigu.gmall.pms.service.SkuSaleAttrValueService;
-
-
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -33,6 +29,13 @@ public class SkuSaleAttrValueController {
     @Autowired
     private SkuSaleAttrValueService skuSaleAttrValueService;
 
+    @RequestMapping("{spuId}")
+    public Resp<List<SkuSaleAttrValueEntity>> querySkuSaleBySpuId(@PathVariable("spuId")Long spuId){
+        List<SkuSaleAttrValueEntity> skuSaleAttrValueEntities = this.skuSaleAttrValueService.querySkuSaleBySpuId(spuId);
+
+        return Resp.ok(skuSaleAttrValueEntities);
+    }
+
     /**
      * 列表
      */
@@ -40,7 +43,8 @@ public class SkuSaleAttrValueController {
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('pms:skusaleattrvalue:list')")
     public Resp<PageVo> list(QueryCondition queryCondition) {
-        PageVo page = skuSaleAttrValueService.queryPage(queryCondition);
+        PageVo page =
+                skuSaleAttrValueService.queryPage(queryCondition);
 
         return Resp.ok(page);
     }
@@ -52,8 +56,9 @@ public class SkuSaleAttrValueController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('pms:skusaleattrvalue:info')")
-    public Resp<SkuSaleAttrValueEntity> info(@PathVariable("id") Long id){
-		SkuSaleAttrValueEntity skuSaleAttrValue = skuSaleAttrValueService.getById(id);
+    public Resp<SkuSaleAttrValueEntity> info(@PathVariable("id") Long id) {
+        SkuSaleAttrValueEntity skuSaleAttrValue =
+                skuSaleAttrValueService.getById(id);
 
         return Resp.ok(skuSaleAttrValue);
     }
@@ -64,8 +69,8 @@ public class SkuSaleAttrValueController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('pms:skusaleattrvalue:save')")
-    public Resp<Object> save(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue){
-		skuSaleAttrValueService.save(skuSaleAttrValue);
+    public Resp<Object> save(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue) {
+        skuSaleAttrValueService.save(skuSaleAttrValue);
 
         return Resp.ok(null);
     }
@@ -76,8 +81,8 @@ public class SkuSaleAttrValueController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('pms:skusaleattrvalue:update')")
-    public Resp<Object> update(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue){
-		skuSaleAttrValueService.updateById(skuSaleAttrValue);
+    public Resp<Object> update(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue) {
+        skuSaleAttrValueService.updateById(skuSaleAttrValue);
 
         return Resp.ok(null);
     }
@@ -88,8 +93,8 @@ public class SkuSaleAttrValueController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('pms:skusaleattrvalue:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids){
-		skuSaleAttrValueService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids) {
+        skuSaleAttrValueService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

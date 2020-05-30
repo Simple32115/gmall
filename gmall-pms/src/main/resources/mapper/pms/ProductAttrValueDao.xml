@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.atguigu.gmall.pms.dao.ProductAttrValueDao">
+        <mapper namespace="com.atguigu.gmall.pms.dao.ProductAttrValueDao">
 
-	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.atguigu.gmall.pms.entity.ProductAttrValueEntity" id="productAttrValueMap">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap
+            type="com.itguigu.gmall.pms.entity.ProductAttrValueEntity" id="productAttrValueMap">
         <result property="id" column="id"/>
         <result property="spuId" column="spu_id"/>
         <result property="attrId" column="attr_id"/>
@@ -13,6 +15,12 @@
         <result property="attrSort" column="attr_sort"/>
         <result property="quickShow" column="quick_show"/>
     </resultMap>
+    <select id="findProBySpuId" resultMap="productAttrValueMap">
+        select p.*
+        from pms_product_attr_value p LEFT JOIN
+        pms_attr a on a.attr_id=p.attr_id
+        where a.search_type=1 and spu_id= #{spuId}
+    </select>
 
 
 </mapper>

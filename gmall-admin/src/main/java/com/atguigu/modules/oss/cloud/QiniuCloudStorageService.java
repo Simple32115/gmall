@@ -1,8 +1,8 @@
 /**
  * Copyright (c) 2016-2019 谷粒开源 All rights reserved.
- *
+ * <p>
  * https://www.guli.cloud
- *
+ * <p>
  * 版权所有，侵权必究！
  */
 
@@ -28,16 +28,18 @@ public class QiniuCloudStorageService extends CloudStorageService {
     private UploadManager uploadManager;
     private String token;
 
-    public QiniuCloudStorageService(CloudStorageConfig config){
+    public QiniuCloudStorageService(CloudStorageConfig config) {
         this.config = config;
 
         //初始化
         init();
     }
 
-    private void init(){
-        uploadManager = new UploadManager(new Configuration(Zone.autoZone()));
-        token = Auth.create(config.getQiniuAccessKey(), config.getQiniuSecretKey()).
+    private void init() {
+        uploadManager =
+                new UploadManager(new Configuration(Zone.autoZone()));
+        token = Auth.create(config.getQiniuAccessKey(),
+                config.getQiniuSecretKey()).
                 uploadToken(config.getQiniuBucketName());
     }
 
@@ -71,7 +73,9 @@ public class QiniuCloudStorageService extends CloudStorageService {
     }
 
     @Override
-    public String uploadSuffix(InputStream inputStream, String suffix) {
-        return upload(inputStream, getPath(config.getQiniuPrefix(), suffix));
+    public String uploadSuffix(InputStream inputStream,
+                               String suffix) {
+        return upload(inputStream, getPath(config.getQiniuPrefix(),
+                suffix));
     }
 }

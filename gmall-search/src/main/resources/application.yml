@@ -1,0 +1,17 @@
+server:
+  port: 8088
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  elasticsearch:
+    rest:
+      uris: http://192.168.174.67:9200
+  rabbitmq:
+    username: weige
+    password: weige
+    virtual-host: /weige
+    host: 192.168.174.67
+  redis:
+    host: 192.168.174.67

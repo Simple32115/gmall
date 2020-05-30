@@ -1,22 +1,19 @@
 package com.atguigu.gmall.pms.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.service.SkuImagesService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.itguigu.gmall.pms.entity.SkuImagesEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.atguigu.gmall.pms.entity.SkuImagesEntity;
-import com.atguigu.gmall.pms.service.SkuImagesService;
-
-
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -32,6 +29,13 @@ import com.atguigu.gmall.pms.service.SkuImagesService;
 public class SkuImagesController {
     @Autowired
     private SkuImagesService skuImagesService;
+
+    @RequestMapping("{skuId}")
+    public Resp<List<SkuImagesEntity>> querySkuImagesBySkuId(@PathVariable("skuId")Long skuId){
+        List<SkuImagesEntity> ImagesEntities = this.skuImagesService.list(new QueryWrapper<SkuImagesEntity>().eq("sku_id",skuId));
+
+        return Resp.ok(ImagesEntities);
+    }
 
     /**
      * 列表
@@ -52,8 +56,8 @@ public class SkuImagesController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('pms:skuimages:info')")
-    public Resp<SkuImagesEntity> info(@PathVariable("id") Long id){
-		SkuImagesEntity skuImages = skuImagesService.getById(id);
+    public Resp<SkuImagesEntity> info(@PathVariable("id") Long id) {
+        SkuImagesEntity skuImages = skuImagesService.getById(id);
 
         return Resp.ok(skuImages);
     }
@@ -64,8 +68,8 @@ public class SkuImagesController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('pms:skuimages:save')")
-    public Resp<Object> save(@RequestBody SkuImagesEntity skuImages){
-		skuImagesService.save(skuImages);
+    public Resp<Object> save(@RequestBody SkuImagesEntity skuImages) {
+        skuImagesService.save(skuImages);
 
         return Resp.ok(null);
     }
@@ -76,8 +80,8 @@ public class SkuImagesController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('pms:skuimages:update')")
-    public Resp<Object> update(@RequestBody SkuImagesEntity skuImages){
-		skuImagesService.updateById(skuImages);
+    public Resp<Object> update(@RequestBody SkuImagesEntity skuImages) {
+        skuImagesService.updateById(skuImages);
 
         return Resp.ok(null);
     }
@@ -88,8 +92,8 @@ public class SkuImagesController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('pms:skuimages:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids){
-		skuImagesService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids) {
+        skuImagesService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

@@ -1,22 +1,17 @@
 package com.atguigu.gmall.sms.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.sms.entity.CategoryBoundsEntity;
+import com.atguigu.gmall.sms.service.CategoryBoundsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.atguigu.gmall.sms.entity.CategoryBoundsEntity;
-import com.atguigu.gmall.sms.service.CategoryBoundsService;
-
-
+import java.util.Arrays;
 
 
 /**
@@ -52,8 +47,9 @@ public class CategoryBoundsController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('sms:categorybounds:info')")
-    public Resp<CategoryBoundsEntity> info(@PathVariable("id") Long id){
-		CategoryBoundsEntity categoryBounds = categoryBoundsService.getById(id);
+    public Resp<CategoryBoundsEntity> info(@PathVariable("id") Long id) {
+        CategoryBoundsEntity categoryBounds =
+                categoryBoundsService.getById(id);
 
         return Resp.ok(categoryBounds);
     }
@@ -64,8 +60,8 @@ public class CategoryBoundsController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('sms:categorybounds:save')")
-    public Resp<Object> save(@RequestBody CategoryBoundsEntity categoryBounds){
-		categoryBoundsService.save(categoryBounds);
+    public Resp<Object> save(@RequestBody CategoryBoundsEntity categoryBounds) {
+        categoryBoundsService.save(categoryBounds);
 
         return Resp.ok(null);
     }
@@ -76,8 +72,8 @@ public class CategoryBoundsController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('sms:categorybounds:update')")
-    public Resp<Object> update(@RequestBody CategoryBoundsEntity categoryBounds){
-		categoryBoundsService.updateById(categoryBounds);
+    public Resp<Object> update(@RequestBody CategoryBoundsEntity categoryBounds) {
+        categoryBoundsService.updateById(categoryBounds);
 
         return Resp.ok(null);
     }
@@ -88,8 +84,8 @@ public class CategoryBoundsController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('sms:categorybounds:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids){
-		categoryBoundsService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids) {
+        categoryBoundsService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

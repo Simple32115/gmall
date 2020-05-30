@@ -1,7 +1,6 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
-import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
@@ -13,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.atguigu.gmall.pms.entity.SpuCommentEntity;
+import com.itguigu.gmall.pms.entity.SpuCommentEntity;
 import com.atguigu.gmall.pms.service.SpuCommentService;
-
-
 
 
 /**
@@ -52,8 +49,8 @@ public class SpuCommentController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('pms:spucomment:info')")
-    public Resp<SpuCommentEntity> info(@PathVariable("id") Long id){
-		SpuCommentEntity spuComment = spuCommentService.getById(id);
+    public Resp<SpuCommentEntity> info(@PathVariable("id") Long id) {
+        SpuCommentEntity spuComment = spuCommentService.getById(id);
 
         return Resp.ok(spuComment);
     }
@@ -64,8 +61,8 @@ public class SpuCommentController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('pms:spucomment:save')")
-    public Resp<Object> save(@RequestBody SpuCommentEntity spuComment){
-		spuCommentService.save(spuComment);
+    public Resp<Object> save(@RequestBody SpuCommentEntity spuComment) {
+        spuCommentService.save(spuComment);
 
         return Resp.ok(null);
     }
@@ -76,8 +73,8 @@ public class SpuCommentController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('pms:spucomment:update')")
-    public Resp<Object> update(@RequestBody SpuCommentEntity spuComment){
-		spuCommentService.updateById(spuComment);
+    public Resp<Object> update(@RequestBody SpuCommentEntity spuComment) {
+        spuCommentService.updateById(spuComment);
 
         return Resp.ok(null);
     }
@@ -88,8 +85,8 @@ public class SpuCommentController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('pms:spucomment:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids){
-		spuCommentService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids) {
+        spuCommentService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

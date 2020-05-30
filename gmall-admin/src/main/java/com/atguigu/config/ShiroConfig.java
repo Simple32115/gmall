@@ -1,8 +1,8 @@
 /**
  * Copyright (c) 2016-2019 谷粒开源 All rights reserved.
- *
+ * <p>
  * https://www.guli.cloud
- *
+ * <p>
  * 版权所有，侵权必究！
  */
 
@@ -33,7 +33,8 @@ public class ShiroConfig {
 
     @Bean("securityManager")
     public SecurityManager securityManager(OAuth2Realm oAuth2Realm) {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        DefaultWebSecurityManager securityManager =
+                new DefaultWebSecurityManager();
         securityManager.setRealm(oAuth2Realm);
         securityManager.setRememberMeManager(null);
         return securityManager;
@@ -41,7 +42,8 @@ public class ShiroConfig {
 
     @Bean("shiroFilter")
     public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
-        ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
+        ShiroFilterFactoryBean shiroFilter =
+                new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
 
         //oauth过滤
@@ -73,7 +75,8 @@ public class ShiroConfig {
 
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
-        AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
+        AuthorizationAttributeSourceAdvisor advisor =
+                new AuthorizationAttributeSourceAdvisor();
         advisor.setSecurityManager(securityManager);
         return advisor;
     }

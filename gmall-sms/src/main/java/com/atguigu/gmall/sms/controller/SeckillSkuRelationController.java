@@ -17,8 +17,6 @@ import com.atguigu.gmall.sms.entity.SeckillSkuRelationEntity;
 import com.atguigu.gmall.sms.service.SeckillSkuRelationService;
 
 
-
-
 /**
  * 秒杀活动商品关联; InnoDB free: 5120 kB
  *
@@ -40,7 +38,8 @@ public class SeckillSkuRelationController {
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('sms:seckillskurelation:list')")
     public Resp<PageVo> list(QueryCondition queryCondition) {
-        PageVo page = seckillSkuRelationService.queryPage(queryCondition);
+        PageVo page =
+                seckillSkuRelationService.queryPage(queryCondition);
 
         return Resp.ok(page);
     }
@@ -52,8 +51,9 @@ public class SeckillSkuRelationController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('sms:seckillskurelation:info')")
-    public Resp<SeckillSkuRelationEntity> info(@PathVariable("id") Long id){
-		SeckillSkuRelationEntity seckillSkuRelation = seckillSkuRelationService.getById(id);
+    public Resp<SeckillSkuRelationEntity> info(@PathVariable("id") Long id) {
+        SeckillSkuRelationEntity seckillSkuRelation =
+                seckillSkuRelationService.getById(id);
 
         return Resp.ok(seckillSkuRelation);
     }
@@ -64,8 +64,8 @@ public class SeckillSkuRelationController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('sms:seckillskurelation:save')")
-    public Resp<Object> save(@RequestBody SeckillSkuRelationEntity seckillSkuRelation){
-		seckillSkuRelationService.save(seckillSkuRelation);
+    public Resp<Object> save(@RequestBody SeckillSkuRelationEntity seckillSkuRelation) {
+        seckillSkuRelationService.save(seckillSkuRelation);
 
         return Resp.ok(null);
     }
@@ -76,8 +76,8 @@ public class SeckillSkuRelationController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('sms:seckillskurelation:update')")
-    public Resp<Object> update(@RequestBody SeckillSkuRelationEntity seckillSkuRelation){
-		seckillSkuRelationService.updateById(seckillSkuRelation);
+    public Resp<Object> update(@RequestBody SeckillSkuRelationEntity seckillSkuRelation) {
+        seckillSkuRelationService.updateById(seckillSkuRelation);
 
         return Resp.ok(null);
     }
@@ -88,8 +88,8 @@ public class SeckillSkuRelationController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('sms:seckillskurelation:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids){
-		seckillSkuRelationService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids) {
+        seckillSkuRelationService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

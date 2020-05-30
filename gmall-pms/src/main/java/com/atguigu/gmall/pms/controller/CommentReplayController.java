@@ -1,7 +1,6 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
-import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
@@ -13,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.atguigu.gmall.pms.entity.CommentReplayEntity;
+import com.itguigu.gmall.pms.entity.CommentReplayEntity;
 import com.atguigu.gmall.pms.service.CommentReplayService;
-
-
 
 
 /**
@@ -52,8 +49,9 @@ public class CommentReplayController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('pms:commentreplay:info')")
-    public Resp<CommentReplayEntity> info(@PathVariable("id") Long id){
-		CommentReplayEntity commentReplay = commentReplayService.getById(id);
+    public Resp<CommentReplayEntity> info(@PathVariable("id") Long id) {
+        CommentReplayEntity commentReplay =
+                commentReplayService.getById(id);
 
         return Resp.ok(commentReplay);
     }
@@ -64,8 +62,8 @@ public class CommentReplayController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('pms:commentreplay:save')")
-    public Resp<Object> save(@RequestBody CommentReplayEntity commentReplay){
-		commentReplayService.save(commentReplay);
+    public Resp<Object> save(@RequestBody CommentReplayEntity commentReplay) {
+        commentReplayService.save(commentReplay);
 
         return Resp.ok(null);
     }
@@ -76,8 +74,8 @@ public class CommentReplayController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('pms:commentreplay:update')")
-    public Resp<Object> update(@RequestBody CommentReplayEntity commentReplay){
-		commentReplayService.updateById(commentReplay);
+    public Resp<Object> update(@RequestBody CommentReplayEntity commentReplay) {
+        commentReplayService.updateById(commentReplay);
 
         return Resp.ok(null);
     }
@@ -88,8 +86,8 @@ public class CommentReplayController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('pms:commentreplay:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids){
-		commentReplayService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids) {
+        commentReplayService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

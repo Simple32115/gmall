@@ -19,7 +19,8 @@
 //
 //    @Bean
 //    public FilterRegistrationBean demoFilterRegistration() {
-//        FilterRegistrationBean registration = new FilterRegistrationBean();
+//        FilterRegistrationBean registration = new
+//        FilterRegistrationBean();
 //        registration.setDispatcherTypes(DispatcherType.REQUEST);
 //        registration.setFilter(new DemoFilter());
 //        registration.addUrlPatterns("/sys/*");
@@ -30,31 +31,42 @@
 //    class DemoFilter implements Filter{
 //
 //        @Override
-//        public void init(FilterConfig filterConfig) throws ServletException {
+//        public void init(FilterConfig filterConfig) throws
+//        ServletException {
 //
 //        }
 //
 //        @Override
-//        public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-//            HttpServletRequest request = (HttpServletRequest)servletRequest;
-//            HttpServletResponse response = (HttpServletResponse) servletResponse;
+//        public void doFilter(ServletRequest servletRequest,
+//        ServletResponse servletResponse, FilterChain filterChain)
+//        throws IOException, ServletException {
+//            HttpServletRequest request = (HttpServletRequest)
+//            servletRequest;
+//            HttpServletResponse response = (HttpServletResponse)
+//            servletResponse;
 //
 //            if(request.getMethod().equalsIgnoreCase("OPTIONS")){
-//                filterChain.doFilter(servletRequest, servletResponse);
+//                filterChain.doFilter(servletRequest,
+//                servletResponse);
 //                return;
 //            }
 //
 //            String uri = request.getRequestURI();
-//            String[] filters = new String[]{"save","update","delete","password"};
+//            String[] filters = new String[]{"save","update",
+//            "delete","password"};
 //            //判断是否包含
 //            for(String filter : filters){
 //                if(uri.indexOf(filter) != -1){
 //                    R r = R.error(HttpStatus.SC_OK, "测试环境，不能操作！");
 //                    String json = new Gson().toJson(r);
 //
-//                    response.setContentType("application/json;charset=utf-8");
-//                    response.setHeader("Access-Control-Allow-Credentials", "true");
-//                    response.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
+//                    response.setContentType("application/json;
+//                    charset=utf-8");
+//                    response.setHeader
+//                    ("Access-Control-Allow-Credentials", "true");
+//                    response.setHeader
+//                    ("Access-Control-Allow-Origin",
+//                    HttpContextUtils.getOrigin());
 //                    response.getWriter().print(json);
 //                    return;
 //                }

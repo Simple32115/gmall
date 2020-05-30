@@ -5,13 +5,12 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-
     gateway:
       routes:
-        - id: pms-route #商品管理路由
-          url: lb://pms-server
+        - id: pms-route # 商品管理路由
+          uri: lb://pms-service
           predicates:
-            - path=/pms/**
+            - Path=/pms/**
         - id: oms-route # 订单管理路由
           uri: lb://oms-service
           predicates:
@@ -28,3 +27,15 @@ spring:
           uri: lb://sms-service
           predicates:
             - Path=/sms/**
+        - id: index-route
+          uri: lb://index-service
+          predicates:
+            - Path=/api/index/**
+          filters:
+            - RewritePath=/api(?<segment>/?.*), $\{segment}
+        - id: item-route
+          uri: lb://item-service
+          predicates:
+            - Path=/api/item/**
+          filters:
+            - RewritePath=/api(?<segment>/?.*), $\{segment}
