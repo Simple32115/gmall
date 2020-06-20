@@ -3,9 +3,9 @@ package com.atguigu.gmall.pms.controller;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
-import com.itguigu.gmall.pms.entity.SkuInfoEntity;
 import com.atguigu.gmall.pms.service.SkuInfoService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.itguigu.gmall.pms.entity.SkuInfoEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +30,9 @@ public class SkuInfoController {
     @Autowired
     private SkuInfoService skuInfoService;
 
+
     @RequestMapping("{spuId}")
-    public Resp<List<SkuInfoEntity>> querySkuBySpuId(@PathVariable(
-            "spuId") Long spuId) {
+    public Resp<List<SkuInfoEntity>> querySkuBySpuId(@PathVariable("spuId") Long spuId) {
 
         List<SkuInfoEntity> list =
                 this.skuInfoService.list(new QueryWrapper<SkuInfoEntity>().eq("spu_id", spuId));
@@ -84,7 +84,6 @@ public class SkuInfoController {
     @PreAuthorize("hasAuthority('pms:skuinfo:update')")
     public Resp<Object> update(@RequestBody SkuInfoEntity skuInfo) {
         skuInfoService.updateById(skuInfo);
-
         return Resp.ok(null);
     }
 

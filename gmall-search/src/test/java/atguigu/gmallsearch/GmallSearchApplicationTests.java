@@ -8,7 +8,7 @@ import atguigu.gmallsearch.repository.GoodsRepository;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
 import com.itguigu.gmall.pms.entity.*;
-import com.itguigu.gmall.wms.entity.WareSkuEntity;
+import com.atguigu.gmall.wms.entity.WareSkuEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

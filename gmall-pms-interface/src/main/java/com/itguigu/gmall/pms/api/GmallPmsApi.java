@@ -31,7 +31,6 @@ public interface GmallPmsApi {
     @PostMapping("pms/spuinfo/page")
     public Resp<List<SpuInfoEntity>> querySpusByPage(@RequestBody QueryCondition queryCondition);
 
-
     @GetMapping("pms/spuinfodesc/info/{spuId}")
     public Resp<SpuInfoDescEntity> querySpuInfoDescBySpuId(@PathVariable("spuId") Long spuId);
 
@@ -46,8 +45,12 @@ public interface GmallPmsApi {
     @GetMapping("pms/category/info/{catId}")
     public Resp<CategoryEntity> queryCategoryByCatId(@PathVariable("catId") Long catId);
 
+    @GetMapping("pms/skusaleattrvalue/sku/{skuId}")
+    public Resp<List<SkuSaleAttrValueEntity>> querySkuSaleBySkuId(@PathVariable("skuId")Long skuId);
+
     @GetMapping("pms/productattrvalue/{spuId}")
     public Resp<List<ProductAttrValueEntity>> findProBySpuId(@PathVariable("spuId")Long spuId);
+
     @RequestMapping("pms/skusaleattrvalue/{spuId}")
     public Resp<List<SkuSaleAttrValueEntity>> querySkuSaleBySpuId(@PathVariable("spuId")Long spuId);
 

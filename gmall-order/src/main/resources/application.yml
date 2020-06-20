@@ -1,0 +1,56 @@
+server:
+  port: 8092
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  redis:
+    host: 192.168.174.67
+
+  rabbitmq:
+    host: 192.168.174.67
+    port: 5672
+    username: weige
+    password: weige
+    virtual-host: /weige
+
+gmall:
+  jwt:
+    pubKeyPath: G:\\尚硅谷\\谷粒商城\\project\\rsa\\rsa.pub # 公钥地址
+    expire: 43200 # 过期时间,单位分钟
+    cookieName: GMALL_TOKEN
+    userKeyName: user-key
+
+  threadPool:
+    corePoolSize: 20
+    maximunPoolSize: 50
+    keepAliveTime: 3
+#hystrix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+
+alipay:
+  app_id: 2016102800773030
+  merchant_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCZG4TD40eZGKVFiK6p7UhNR3fsu5Z0JtYiyuWP9TjAlWKlBCvJnQCWcGMFxsRqz7PpWzUfFRE16qtWo1FLZdVqW7j5qrA9JlQ2yso+m0v4+J8ruPDuSfjNy1DeNdgO37BCNKcYy50C2JEbbNn/1jKK8vQFhAPyR/Za4X8y8NoEZA1TRJXtLLAew1vFvudOnU70weKqZclbCMgaGrt+IWLZfIyzlGyaE714+l+DoTNLS2Tasy8uf+1bNYZegjBu2ILnWQNPqPbE4TBOdJSTR6hok8Izvho3/P544DvOwQQcwHcpRo+jUbKRPuChSrvMSNMDRkXpUsFzltNDAd6vn+VdAgMBAAECggEAWdHiBkUcaL0jn/I6fWe9hdCKky/NaOCruQeMuvJiU+CPWT1kLsfTY24VOXtNGVg2NI0UUeK7EQVVdOMkuvXHyLh8gMNY1tbYirhXA3l5jVrVjgHWHgT5WEmRbHrsAHXL4lsfOBWjS9se7ZbjIQpY5lj3PREge48qAFDPnWPckrvx77oM2L6uYG8NZd5HKez8Q7rL4yMDJt5Jd7xlFPq4Ayl73tcWL7DeD9xhBZT7Me+1OzsoQnxXvqte9nGoANdFd7JvMtbkz5VHskIskpxdMDaQ7qOACOQ8idzaXBZgZYDVCz7vcj18LOEMnLrNxKCRv3o0iNU9rbf/dNAzs4cZhQKBgQDbTIIIz2LEUh990hvKMy14hWDxY9bEx/RPOPv3WZk/2QCjZmkOtDbXwWUANcKOLIsUVCmMv7xcGMmmDCinvVPB84x6bwuyvYKduh8NTV3sbFGI/1yCiEttmVyM4NHtjDlgIaKsAt7vcXxOq2uYmPUMhYv5XDnNj3GpzUmWAH4EPwKBgQCyuycQe82yFtiu+EDwuFttkm2/1infgeJ/bmNgcurLyGOuRzeLh7snU0bSke0nx98doNRcGeP1plu5ow2ydzVGjkHaDmQZGSCIhzRRHTkm235m9DQcQThpTQY/qn+MUIf6gsojQtLGdtawXVy4cQ5dTmSEbCp7LeCIDU9Xnvd/YwKBgGWv61gUehLYlbutEq/G3V3WUyZ7ihoDMfkOTl/azyH5CL+7/BkSXZ/cEG5xfz6XzwHlKMMYIUp/P/ncB3oIY2869LfNCBqgn5FtvXpYlqXLcF9bMdVhR8CRbYXxtcY10GEQF7M1PZTABckg2aqPuolM36QILNFxo13+UBHbNpPXAoGBAIMKeJ+7RZrW6VOPrH1RjacOfuzx5o16u0fW9YGXf9KdP4hdqrngcDVq9zgXyZsrDci5TDmiueI3cHTwuXApuqPaVSm892L3a0TubEs0c9yrfUeasEIvB18dHAG9zfpgaPIgxneH3OWp58ozCXIpYfDDMytr6tGZV1ApAg0p/iglAoGATrdQ7fTA5xDQvi7qZcXIClWZrAatS56S4sF2zFqxv54RRmOBSNJy4GMZvm2rWbesLD3bNx0/HGnkq47+JduwIPY4WJUsR4+ALfeAG45vr9CfekR8tB41I/0A2aKDmtCuNOcB39My5EpNx256xbDeDgc2nviZXcqX1ILOrkAIn+E=
+  alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArIZopWKgZHhi0l+s0ucSEwtxRPTG03pMW+2RzPgA4ZcIo4uc9vOdesL8Q5N+hZeCiE0y29/4vuXnXabSaREiB+qXqsq+yuTtaZohx/iwS9l5vDIHds7uORgr7Lg5dKTId8lvAsSlDiMU1XTLx96zQhwGy0IiYEInYT6KEh9lRV/UMD01BLiABptZcYtLXdsqh2ti8zBRvrd52+hQW4Zt8bybUdjvbVEMkZTHigTk8NL2n96Ccb9q9AQ6Km8X5s/Mdl3sUNw7XAilJZVeOJDllcIbKwHhyIKg/6uR7nYkbIrPQBLSwGV627ytbqpA7eZhj6p7aUh/f+R3tJlS6Ji8jwIDAQAB
+  notify_url: xxxx
+  return_url: http://www.jingdong.com
+  sign_type: RSA2
+  gatewayUrl: https://openapi.alipaydev.com/gateway.do
+
+
+
+
+

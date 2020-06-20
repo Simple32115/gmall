@@ -1,6 +1,7 @@
 package com.atguigu.gmall.wms.controller;
 
 import java.util.Arrays;
+import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
@@ -12,18 +13,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.itguigu.gmall.wms.entity.WareInfoEntity;
+import com.atguigu.gmall.wms.entity.WareInfoEntity;
 import com.atguigu.gmall.wms.service.WareInfoService;
 
 
+
+
 /**
- * 仓库信息; InnoDB free: 5120 kB
+ * 仓库信息
  *
- * @author MrZ
- * @email zww@atguigu.com
- * @date 2020-05-03 21:25:10
+ * @author liangwenhao
+ * @email lwh@atguigu.com
+ * @date 2020-06-11 11:01:30
  */
-@Api(tags = "仓库信息; InnoDB free: 5120 kB 管理")
+@Api(tags = "仓库信息 管理")
 @RestController
 @RequestMapping("wms/wareinfo")
 public class WareInfoController {
@@ -49,8 +52,8 @@ public class WareInfoController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('wms:wareinfo:info')")
-    public Resp<WareInfoEntity> info(@PathVariable("id") Long id) {
-        WareInfoEntity wareInfo = wareInfoService.getById(id);
+    public Resp<WareInfoEntity> info(@PathVariable("id") Long id){
+		WareInfoEntity wareInfo = wareInfoService.getById(id);
 
         return Resp.ok(wareInfo);
     }
@@ -61,8 +64,8 @@ public class WareInfoController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('wms:wareinfo:save')")
-    public Resp<Object> save(@RequestBody WareInfoEntity wareInfo) {
-        wareInfoService.save(wareInfo);
+    public Resp<Object> save(@RequestBody WareInfoEntity wareInfo){
+		wareInfoService.save(wareInfo);
 
         return Resp.ok(null);
     }
@@ -73,8 +76,8 @@ public class WareInfoController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('wms:wareinfo:update')")
-    public Resp<Object> update(@RequestBody WareInfoEntity wareInfo) {
-        wareInfoService.updateById(wareInfo);
+    public Resp<Object> update(@RequestBody WareInfoEntity wareInfo){
+		wareInfoService.updateById(wareInfo);
 
         return Resp.ok(null);
     }
@@ -85,8 +88,8 @@ public class WareInfoController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('wms:wareinfo:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids) {
-        wareInfoService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids){
+		wareInfoService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

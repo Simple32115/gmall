@@ -1,7 +1,7 @@
 package atguigu.gmallsearch.feign;
 
 
-import com.itguigu.gmall.wms.api.GmallWmsApi;
+import com.atguigu.gmall.wms.vo.GmallWmsApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient("wms-service")

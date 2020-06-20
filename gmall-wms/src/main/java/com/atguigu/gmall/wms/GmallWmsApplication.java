@@ -7,9 +7,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@MapperScan("com.atguigu.gmall.wms.dao")
-@EnableSwagger2
 @EnableDiscoveryClient
+@EnableSwagger2
+@MapperScan("com.atguigu.gmall.wms.dao")
+//@EnableScheduling
 public class GmallWmsApplication {
 
     public static void main(String[] args) {

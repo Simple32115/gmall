@@ -1,17 +1,17 @@
 package com.atguigu.gmall.wms.dao;
 
-import com.itguigu.gmall.wms.entity.WareOrderTaskDetailEntity;
+import com.atguigu.gmall.wms.entity.WareOrderTaskDetailEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 库存工作单; InnoDB free: 5120 kB
- *
- * @author MrZ
- * @email zww@atguigu.com
- * @date 2020-05-03 21:25:10
+ * 库存工作单
+ * 
+ * @author liangwenhao
+ * @email lwh@atguigu.com
+ * @date 2020-06-11 11:01:30
  */
 @Mapper
 public interface WareOrderTaskDetailDao extends BaseMapper<WareOrderTaskDetailEntity> {
-
+	
 }

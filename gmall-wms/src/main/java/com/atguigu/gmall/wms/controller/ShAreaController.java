@@ -1,6 +1,7 @@
 package com.atguigu.gmall.wms.controller;
 
 import java.util.Arrays;
+import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
@@ -12,18 +13,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.itguigu.gmall.wms.entity.ShAreaEntity;
+import com.atguigu.gmall.wms.entity.ShAreaEntity;
 import com.atguigu.gmall.wms.service.ShAreaService;
 
 
+
+
 /**
- * 全国省市区信息; InnoDB free: 5120 kB
+ * 全国省市区信息
  *
- * @author MrZ
- * @email zww@atguigu.com
- * @date 2020-05-03 21:25:10
+ * @author liangwenhao
+ * @email lwh@atguigu.com
+ * @date 2020-06-11 11:01:30
  */
-@Api(tags = "全国省市区信息; InnoDB free: 5120 kB 管理")
+@Api(tags = "全国省市区信息 管理")
 @RestController
 @RequestMapping("wms/sharea")
 public class ShAreaController {
@@ -49,8 +52,8 @@ public class ShAreaController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('wms:sharea:info')")
-    public Resp<ShAreaEntity> info(@PathVariable("id") Integer id) {
-        ShAreaEntity shArea = shAreaService.getById(id);
+    public Resp<ShAreaEntity> info(@PathVariable("id") Integer id){
+		ShAreaEntity shArea = shAreaService.getById(id);
 
         return Resp.ok(shArea);
     }
@@ -61,8 +64,8 @@ public class ShAreaController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('wms:sharea:save')")
-    public Resp<Object> save(@RequestBody ShAreaEntity shArea) {
-        shAreaService.save(shArea);
+    public Resp<Object> save(@RequestBody ShAreaEntity shArea){
+		shAreaService.save(shArea);
 
         return Resp.ok(null);
     }
@@ -73,8 +76,8 @@ public class ShAreaController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('wms:sharea:update')")
-    public Resp<Object> update(@RequestBody ShAreaEntity shArea) {
-        shAreaService.updateById(shArea);
+    public Resp<Object> update(@RequestBody ShAreaEntity shArea){
+		shAreaService.updateById(shArea);
 
         return Resp.ok(null);
     }
@@ -85,8 +88,8 @@ public class ShAreaController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('wms:sharea:delete')")
-    public Resp<Object> delete(@RequestBody Integer[] ids) {
-        shAreaService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Integer[] ids){
+		shAreaService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

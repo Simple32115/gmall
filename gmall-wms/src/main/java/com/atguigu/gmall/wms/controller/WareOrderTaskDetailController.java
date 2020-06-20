@@ -1,6 +1,7 @@
 package com.atguigu.gmall.wms.controller;
 
 import java.util.Arrays;
+import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
@@ -12,18 +13,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.itguigu.gmall.wms.entity.WareOrderTaskDetailEntity;
+import com.atguigu.gmall.wms.entity.WareOrderTaskDetailEntity;
 import com.atguigu.gmall.wms.service.WareOrderTaskDetailService;
 
 
+
+
 /**
- * 库存工作单; InnoDB free: 5120 kB
+ * 库存工作单
  *
- * @author MrZ
- * @email zww@atguigu.com
- * @date 2020-05-03 21:25:10
+ * @author liangwenhao
+ * @email lwh@atguigu.com
+ * @date 2020-06-11 11:01:30
  */
-@Api(tags = "库存工作单; InnoDB free: 5120 kB 管理")
+@Api(tags = "库存工作单 管理")
 @RestController
 @RequestMapping("wms/wareordertaskdetail")
 public class WareOrderTaskDetailController {
@@ -37,8 +40,7 @@ public class WareOrderTaskDetailController {
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('wms:wareordertaskdetail:list')")
     public Resp<PageVo> list(QueryCondition queryCondition) {
-        PageVo page =
-                wareOrderTaskDetailService.queryPage(queryCondition);
+        PageVo page = wareOrderTaskDetailService.queryPage(queryCondition);
 
         return Resp.ok(page);
     }
@@ -50,9 +52,8 @@ public class WareOrderTaskDetailController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('wms:wareordertaskdetail:info')")
-    public Resp<WareOrderTaskDetailEntity> info(@PathVariable("id") Long id) {
-        WareOrderTaskDetailEntity wareOrderTaskDetail =
-                wareOrderTaskDetailService.getById(id);
+    public Resp<WareOrderTaskDetailEntity> info(@PathVariable("id") Long id){
+		WareOrderTaskDetailEntity wareOrderTaskDetail = wareOrderTaskDetailService.getById(id);
 
         return Resp.ok(wareOrderTaskDetail);
     }
@@ -63,8 +64,8 @@ public class WareOrderTaskDetailController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('wms:wareordertaskdetail:save')")
-    public Resp<Object> save(@RequestBody WareOrderTaskDetailEntity wareOrderTaskDetail) {
-        wareOrderTaskDetailService.save(wareOrderTaskDetail);
+    public Resp<Object> save(@RequestBody WareOrderTaskDetailEntity wareOrderTaskDetail){
+		wareOrderTaskDetailService.save(wareOrderTaskDetail);
 
         return Resp.ok(null);
     }
@@ -75,8 +76,8 @@ public class WareOrderTaskDetailController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('wms:wareordertaskdetail:update')")
-    public Resp<Object> update(@RequestBody WareOrderTaskDetailEntity wareOrderTaskDetail) {
-        wareOrderTaskDetailService.updateById(wareOrderTaskDetail);
+    public Resp<Object> update(@RequestBody WareOrderTaskDetailEntity wareOrderTaskDetail){
+		wareOrderTaskDetailService.updateById(wareOrderTaskDetail);
 
         return Resp.ok(null);
     }
@@ -87,8 +88,8 @@ public class WareOrderTaskDetailController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('wms:wareordertaskdetail:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids) {
-        wareOrderTaskDetailService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids){
+		wareOrderTaskDetailService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

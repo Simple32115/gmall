@@ -1,6 +1,7 @@
 package com.atguigu.gmall.wms.controller;
 
 import java.util.Arrays;
+import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
@@ -12,18 +13,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.itguigu.gmall.wms.entity.FeightTemplateEntity;
+import com.atguigu.gmall.wms.entity.FeightTemplateEntity;
 import com.atguigu.gmall.wms.service.FeightTemplateService;
 
 
+
+
 /**
- * 运费模板; InnoDB free: 5120 kB
+ * 运费模板
  *
- * @author MrZ
- * @email zww@atguigu.com
- * @date 2020-05-03 21:25:10
+ * @author liangwenhao
+ * @email lwh@atguigu.com
+ * @date 2020-06-11 11:01:30
  */
-@Api(tags = "运费模板; InnoDB free: 5120 kB 管理")
+@Api(tags = "运费模板 管理")
 @RestController
 @RequestMapping("wms/feighttemplate")
 public class FeightTemplateController {
@@ -49,9 +52,8 @@ public class FeightTemplateController {
     @ApiOperation("详情查询")
     @GetMapping("/info/{id}")
     @PreAuthorize("hasAuthority('wms:feighttemplate:info')")
-    public Resp<FeightTemplateEntity> info(@PathVariable("id") Long id) {
-        FeightTemplateEntity feightTemplate =
-                feightTemplateService.getById(id);
+    public Resp<FeightTemplateEntity> info(@PathVariable("id") Long id){
+		FeightTemplateEntity feightTemplate = feightTemplateService.getById(id);
 
         return Resp.ok(feightTemplate);
     }
@@ -62,8 +64,8 @@ public class FeightTemplateController {
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('wms:feighttemplate:save')")
-    public Resp<Object> save(@RequestBody FeightTemplateEntity feightTemplate) {
-        feightTemplateService.save(feightTemplate);
+    public Resp<Object> save(@RequestBody FeightTemplateEntity feightTemplate){
+		feightTemplateService.save(feightTemplate);
 
         return Resp.ok(null);
     }
@@ -74,8 +76,8 @@ public class FeightTemplateController {
     @ApiOperation("修改")
     @PostMapping("/update")
     @PreAuthorize("hasAuthority('wms:feighttemplate:update')")
-    public Resp<Object> update(@RequestBody FeightTemplateEntity feightTemplate) {
-        feightTemplateService.updateById(feightTemplate);
+    public Resp<Object> update(@RequestBody FeightTemplateEntity feightTemplate){
+		feightTemplateService.updateById(feightTemplate);
 
         return Resp.ok(null);
     }
@@ -86,8 +88,8 @@ public class FeightTemplateController {
     @ApiOperation("删除")
     @PostMapping("/delete")
     @PreAuthorize("hasAuthority('wms:feighttemplate:delete')")
-    public Resp<Object> delete(@RequestBody Long[] ids) {
-        feightTemplateService.removeByIds(Arrays.asList(ids));
+    public Resp<Object> delete(@RequestBody Long[] ids){
+		feightTemplateService.removeByIds(Arrays.asList(ids));
 
         return Resp.ok(null);
     }

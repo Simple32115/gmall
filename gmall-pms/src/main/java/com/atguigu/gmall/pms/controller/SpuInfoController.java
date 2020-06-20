@@ -8,7 +8,9 @@ import com.atguigu.gmall.pms.vo.SpuInfoVO;
 import com.itguigu.gmall.pms.entity.SpuInfoEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +31,11 @@ public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
 
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
+    @Value("${item.rabbitmq.exchange}")
+    private String EXCHANGE_NAME;
 
     @RequestMapping()
     public Resp<PageVo> querySpuInfo(QueryCondition condition,
@@ -80,7 +86,6 @@ public class SpuInfoController {
     @PreAuthorize("hasAuthority('pms:spuinfo:save')")
     public Resp<Object> save(@RequestBody SpuInfoVO spuInfoVO) {
         spuInfoService.saveSpuInfoVO(spuInfoVO);
-
         return Resp.ok(null);
     }
 
@@ -92,6 +97,7 @@ public class SpuInfoController {
     @PreAuthorize("hasAuthority('pms:spuinfo:update')")
     public Resp<Object> update(@RequestBody SpuInfoEntity spuInfo) {
         spuInfoService.updateById(spuInfo);
+        this.amqpTemplate.convertAndSend(EXCHANGE_NAME,"item.update",spuInfo.getId());
         return Resp.ok(null);
     }
 

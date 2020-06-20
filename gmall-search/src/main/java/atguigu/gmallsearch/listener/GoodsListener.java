@@ -7,7 +7,7 @@ import atguigu.gmallsearch.pojo.SearchAttr;
 import atguigu.gmallsearch.repository.GoodsRepository;
 import com.atguigu.core.bean.Resp;
 import com.itguigu.gmall.pms.entity.*;
-import com.itguigu.gmall.wms.entity.WareSkuEntity;
+import com.atguigu.gmall.wms.entity.WareSkuEntity;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;

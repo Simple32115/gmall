@@ -1,0 +1,23 @@
+server:
+  port: 8090
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  redis:
+    host: 192.168.174.67
+
+  rabbitmq:
+    host: 192.168.174.67
+    port: 5672
+    username: weige
+    password: weige
+    virtual-host: /weige
+
+gmall:
+  jwt:
+    pubKeyPath: G:\\尚硅谷\\谷粒商城\\project\\rsa\\rsa.pub # 公钥地址
+    expire: 43200 # 过期时间,单位分钟
+    cookieName: GMALL_TOKEN
+    userKeyName: user-key
